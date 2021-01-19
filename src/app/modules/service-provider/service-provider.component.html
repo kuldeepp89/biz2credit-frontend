@@ -1,0 +1,46 @@
+<app-header></app-header>
+
+<div class="row col-md-12 block">
+	<div class="col-md-8">		
+		<div class="mat-elevation-z8">
+		<mat-form-field>
+		<mat-label>Start Typing</mat-label>
+		<input matInput (keyup)="applyFilter($event)" placeholder="BSNL" #input>
+		</mat-form-field>
+		<table mat-table [dataSource]="dataSource" matSort>
+
+		<ng-container matColumnDef="name">
+		  <th mat-header-cell *matHeaderCellDef> Company </th>
+		  <td mat-cell *matCellDef="let element" type style="cursor: pointer;" (click)="showProivderDetails(element._id)"> <img  src="{{element.image}}"></td>
+		</ng-container>
+
+		<ng-container matColumnDef="lowest_price">
+		  <th mat-header-cell *matHeaderCellDef mat-sort-header> Lowest Price </th>
+		  <td mat-cell *matCellDef="let element"> {{element.lowest_price}} </td>
+		</ng-container>
+
+		<ng-container matColumnDef="rating">
+		  <th mat-header-cell *matHeaderCellDef mat-sort-header> Rating </th>
+		  <td mat-cell *matCellDef="let element"> {{element.rating}} </td>
+		</ng-container>
+
+		<ng-container matColumnDef="max_speed">
+		  <th mat-header-cell *matHeaderCellDef mat-sort-header> Max Speed </th>
+		  <td mat-cell *matCellDef="let element"> {{element.max_speed}} </td>
+		</ng-container>
+
+		<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+		<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+		<tr class="mat-row" *matNoDataRow>
+		  <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+		</tr>
+		</table>
+
+		<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<app-service-provider-details [providerDetails]="providerDetails"></app-service-provider-details>
+	</div>
+</div>
+

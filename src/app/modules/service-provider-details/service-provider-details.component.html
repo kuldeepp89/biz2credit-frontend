@@ -1,0 +1,20 @@
+<mat-card class="example-card" *ngIf="providerDetails.name">
+  <mat-card-header>
+    <mat-card-title>{{providerDetails.name}}</mat-card-title>
+    <mat-card-subtitle>{{providerDetails.description}}</mat-card-subtitle>
+  </mat-card-header>
+  
+  <mat-card-content>
+  	<button mat-button>Rating: {{providerDetails.rating}}</button>
+    <button mat-button>Max Speed: {{providerDetails.max_speed}}</button>
+    <button mat-button>Lowest Price: {{providerDetails.lowest_price}}</button>
+    <button mat-button>Contact Number: {{providerDetails.contact_number}}</button>
+    <button mat-button>Email: {{providerDetails.email}}</button>
+    <button mat-button>Website URL: <a href="{{providerDetails.url}}">{{providerDetails.url}}</a></button>
+  </mat-card-content>
+</mat-card>
+<mat-card class="example-card" *ngIf="!providerDetails.name">
+  <mat-card-header>
+   	Select a service provider to get details
+  </mat-card-header>
+</mat-card>
